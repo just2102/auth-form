@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "coolveticaregular";
+  src:
+    url("/src/assets/fonts/coolvetica_rg-webfont.woff2") format("woff2"),
+    url("/src/assets/fonts/coolvetica_rg-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "coolveticaregular", sans-serif, Inter, system-ui, Avenir, Helvetica, Arial;
+}
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 80% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #231a59 20%, #151837 40%, #09111a 65%, #101e2d 80%);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 400px) {
+    display: block;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-size: x-large;
+}
+
+h4 {
+  font-size: large;
+}

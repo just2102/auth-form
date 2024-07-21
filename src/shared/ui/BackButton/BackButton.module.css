@@ -1,0 +1,21 @@
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  text-align: left;
+
+  @media (max-width: 570px) {
+    position: unset;
+    padding-top: 10px;
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .icon {
+    width: 16px;
+  }
+}

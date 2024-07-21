@@ -1,0 +1,9 @@
+.appWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 650px) {
+    height: 100%;
+  }
+}

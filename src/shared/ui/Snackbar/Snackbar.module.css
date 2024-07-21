@@ -1,0 +1,52 @@
+.snackbar {
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 3vh;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity 0.5s,
+    transform 0.5s,
+    bottom 0.5s;
+}
+
+.snackbar.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.snackbar.error {
+  background-color: #f44336;
+}
+
+.snackbar.info {
+  background-color: #333;
+}
+
+.snackbar.success {
+  background-color: #4caf50;
+}
+
+.message {
+  margin-right: 10px;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
