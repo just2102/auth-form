@@ -82,6 +82,7 @@ const MainPage = () => {
   const handleBackClick = () => {
     setFormView(FormViews.Main)
     setErrorMessage(null)
+    setEmailExists(false)
   }
 
   return (
