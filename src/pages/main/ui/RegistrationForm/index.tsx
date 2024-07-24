@@ -28,6 +28,9 @@ const RegistrationForm = ({ email, onSubmit, setEmail }: RegistrationFormProps) 
           Glad you're with us! <br /> Please set a password for your account:
         </h3>
         <TextInput
+          type='email'
+          autoComplete='username'
+          aria-label='email'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder='Enter your email'

@@ -9,7 +9,6 @@ import { validEmail } from "src/shared/utils/validation"
 
 import EmailInputForm from "./EmailInputForm"
 import styles from "./MainPage.module.css"
-import PasswordInputForm from "./PasswordInputForm"
 import RegistrationForm from "./RegistrationForm"
 import SuccessScreen from "./SuccessScreen"
 
@@ -24,12 +23,14 @@ const MainPage = () => {
   const [email, setEmail] = useState<string>("")
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+  const [emailExists, setEmailExists] = useState<boolean>(false)
+
   const handleEmailClick = () => {
     setFormView(FormViews.EmailInput)
     setErrorMessage(null)
   }
 
-  const handleEmailSubmit = (_email: string) => {
+  const handleEmailSubmit = async (_email: string) => {
     setEmail(_email)
     setErrorMessage(null)
 
@@ -39,9 +40,9 @@ const MainPage = () => {
       return
     }
 
-    const emailExist = checkEmail(_email)
+    const emailExist = await checkEmail(_email)
     if (emailExist) {
-      setFormView(FormViews.PasswordInput)
+      setEmailExists(true)
     } else {
       setFormView(FormViews.Registration)
     }
@@ -57,7 +58,10 @@ const MainPage = () => {
         setErrorMessage("Incorrect password")
       }
     } catch (err) {
+      console.error(err)
       setErrorMessage("An error occurred during login")
+    } finally {
+      setEmailExists(false)
     }
   }
 
@@ -96,11 +100,10 @@ const MainPage = () => {
             />
           </>
         )}
-        {formView === FormViews.EmailInput && <EmailInputForm onSubmit={handleEmailSubmit} />}
-        {formView === FormViews.PasswordInput && (
-          <PasswordInputForm
-            email={email}
-            onSubmit={handlePasswordSubmit}
+        {formView === FormViews.EmailInput && (
+          <EmailInputForm
+            emailExists={emailExists}
+            onSubmit={emailExists ? handlePasswordSubmit : handleEmailSubmit}
           />
         )}
         {formView === FormViews.Registration && (
